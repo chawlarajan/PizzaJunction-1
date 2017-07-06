@@ -9,10 +9,6 @@ import { AppComponent }  from './app.component';
 import { HeaderComponent } from './shared/components/header/header.component';
 import { FooterComponent } from './shared/components/footer/footer.component';
 import { HomeComponent } from './home/home.component';
-import { MenuComponent } from './menu/menu.component';
-import { MenuItemsComponent } from './menu/menuitems/menuitems.component';
-import { OrderSummaryComponent } from './menu/ordersummary/ordersummary.component';
-import { LoginComponent } from './login/login.component';
 import { PageNotFoundComponent } from './error404/error404.component'
 import { MenuItemsResolver } from './menu/menuitems-resolver/menuItems-resolver.service';
 //Services
@@ -36,10 +32,6 @@ import { RouteConfig } from './routes/routes.config';
     HeaderComponent,
     FooterComponent,
     HomeComponent,
-    MenuComponent,
-    MenuItemsComponent,
-    OrderSummaryComponent,
-    LoginComponent,
     PageNotFoundComponent
   ],
   providers: [

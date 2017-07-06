@@ -16,10 +16,6 @@ var app_component_1 = require("./app.component");
 var header_component_1 = require("./shared/components/header/header.component");
 var footer_component_1 = require("./shared/components/footer/footer.component");
 var home_component_1 = require("./home/home.component");
-var menu_component_1 = require("./menu/menu.component");
-var menuitems_component_1 = require("./menu/menuitems/menuitems.component");
-var ordersummary_component_1 = require("./menu/ordersummary/ordersummary.component");
-var login_component_1 = require("./login/login.component");
 var error404_component_1 = require("./error404/error404.component");
 var menuItems_resolver_service_1 = require("./menu/menuitems-resolver/menuItems-resolver.service");
 //Services
@@ -46,10 +42,6 @@ AppModule = __decorate([
             header_component_1.HeaderComponent,
             footer_component_1.FooterComponent,
             home_component_1.HomeComponent,
-            menu_component_1.MenuComponent,
-            menuitems_component_1.MenuItemsComponent,
-            ordersummary_component_1.OrderSummaryComponent,
-            login_component_1.LoginComponent,
             error404_component_1.PageNotFoundComponent
         ],
         providers: [
