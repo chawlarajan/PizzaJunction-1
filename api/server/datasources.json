@@ -1,0 +1,16 @@
+{
+  "db": {
+    "name": "db",
+    "connector": "memory"
+  },
+  "sqlserverdb": {
+    "host": ".\\SQL2014DEV",
+    "port": 1433,
+    "url": "mssql://sa:sa123456@.\\SQL2014DEV/PizzaJunctionOrders",
+    "database": "PizzaJunctionOrders",
+    "password": "sa123456",
+    "name": "sqlserverdb",
+    "connector": "mssql",
+    "user": "sa"
+  }
+}

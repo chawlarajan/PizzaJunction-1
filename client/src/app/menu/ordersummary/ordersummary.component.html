@@ -1,0 +1,59 @@
+
+<h3 class="side-heading">Order Summary</h3>
+<div class="list-group">
+    <div class="list-group-item">
+        <div class="order-summary">
+            <div class="caption">
+                <!--@*@foreach (var item in Model.Keys)
+                {
+                    <div class="line-item">
+                        <div class="desc pull-left">@item.Count X @item.ItemTitle, @item.Size@(item.Metric == "Inches" ? "\"" : "")   @item.SizeDescription</div>
+                        <div class="amount pull-left">@item.Price * @item.Count</div>
+                    </div>
+                }*@-->
+                <div class="line-item">
+                    <div class="desc pull-left">1 X Cheesy Cheese Pizza, 10" Small</div>
+                    <div class="amount pull-left">$12.00</div>
+                </div>
+                <div class="line-item">
+                    <div class="desc pull-left">2 X Cheesy Cheese Pizza, 10" Small</div>
+                    <div class="amount pull-left">$12.00</div>
+                </div>
+                <div class="line-item">
+                    <div class="desc pull-left">1 X Cheesy Cheese Pizza, 10" Small</div>
+                    <div class="amount pull-left">$12.00</div>
+                </div>
+                <div class="line-item">
+                    <div class="desc pull-left divider"></div>
+                    <div class="amount pull-left"></div>
+                </div>
+                <div class="sub-total line-item">
+                    <div class="desc pull-left">Sub Total</div>
+                    <div class="amount pull-right">$12.00</div>     
+                    <!--Get total sum of order-->
+                </div>
+                <div class="delivery line-item">
+                    <div class="desc pull-left">Delivery Fee</div>
+                    <div class="amount pull-right">$12.00</div>     
+                    <!--Calculate as per distance-->
+                </div>
+                <div class="tax line-item">
+                    <div class="desc pull-left">GST (5%)</div>
+                    <div class="amount pull-right">$12.00</div>     
+                    <!--5% of total sum-->
+                </div>
+                <div class="total line-item">
+                    <div class="desc pull-left last">Total</div>
+                    <div class="amount pull-right">$12.00</div>     
+                    <!--Get total sum of order including Delivery Fee, GST-->
+                </div>
+                <div class="cart-button button-group">
+                    <button type="button" class="btn btn-cart">
+                        Checkout <i class="fa fa-shopping-cart"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

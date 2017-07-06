@@ -1,0 +1,17 @@
+<div class="col-md-4 col-sm-6" *ngFor="let item of menuItems">
+    <div class="product-col">
+        <div class="caption">
+            <h4><a href="product.html">{{item.ItemTitle}}</a></h4>
+            <div class="description" title="item.Description">
+                {{item.ItemDescription.length > 30 ? item.ItemDescription.substr(0,30) + '...': item.ItemDescription}}
+            </div>
+            <div class="price">                
+                <div class="desc pull-left">
+                    {{item.Size}}{{item.MetricType == "Inches" ? "\"" : ""}} {{item.Description}}
+                </div>
+                <div class="amount pull-left">{{item.ItemPrice | currency:'USD':true}}</div>
+                <button class="pull-right btn btn-add"><i class="fa fa-plus"></i></button>
+            </div>
+        </div>
+    </div>
+</div>

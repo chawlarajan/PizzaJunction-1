@@ -1,0 +1,71 @@
+<header id="header-area">
+    <!-- Nested Row Starts -->
+    <div class="row">
+        <!-- Logo Starts -->
+        <div class="col-md-4 col-xs-12">
+            <div id="logo">
+                <a [routerLink]="['/home']"><img src="app/common/images/logo.png" title="Pizza Junction" alt="Grocery Shoppe" class="img-responsive" style="height:170px" /></a>
+            </div>
+        </div>
+        <!-- Logo Ends -->
+        <!-- Header Right Starts -->
+        <div class="col-md-8 col-xs-12">
+            <div class="row header-top">
+                <!-- Header Links Starts -->
+                <!--<div class="col-md-9 col-xs-12">
+                                <div class="header-links">
+                                    <ul class="list-unstyled list-inline pull-left">
+                                        <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                                        <li><a href="#">My Account</a></li>
+                                        @Html.Partial("_LoginPartial")
+                                    </ul>
+                                </div>
+                            </div>-->
+                <!-- Header Links Ends -->
+                <div class="col-md-12 col-xs-12">
+                    <div class="pull-right">
+                        <h4 class="lead">
+                            Call Us <i class="fa fa-phone"></i> <span>1(604)-746-0246</span>
+                        </h4>
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="col-md-8 col-xs-12">
+                        <div class="main-heading"><span><i>We Deliver Best Quality Pizzas</i></span></div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!-- Header Right Ends -->
+    </div>
+
+    <!-- Nested Row Ends -->
+</header>
+
+<!-- Main Menu Starts -->
+<nav id="main-menu" class="navbar" role="navigation">
+    <!-- Nav Header Starts -->
+    <div class="navbar-header">
+        <button type="button" class="btn btn-navbar navbar-toggle" data-toggle="collapse" data-target=".navbar-cat-collapse">
+            <span class="sr-only">Toggle Navigation</span>
+            <i class="fa fa-bars"></i>
+        </button>
+    </div>
+    <!-- Nav Header Ends -->
+    <!-- Navbar Cat collapse Starts -->
+    <div class="collapse navbar-collapse navbar-cat-collapse">
+        <ul class="nav navbar-nav">
+            <li><a routerLink="/home">HOME</a></li>
+            <li><a routerLink="/menu">MENU</a></li>
+            <li><a href="#">DEALS</a></li>
+            <li><a href="#">DRINKS</a></li>
+            <li><a href="#">ABOUT US</a></li>
+            <li><a href="#">CONTACT US</a></li>
+            <li><a routerLink="/login">LOG IN</a></li>
+        </ul>
+    </div>
+    <!-- Navbar Cat collapse Ends -->
+</nav>
+<!-- Main Menu Ends -->
