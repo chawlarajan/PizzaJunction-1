@@ -5,5 +5,5 @@ import { Component } from '@angular/core';
     templateUrl: './ordersummary.component.html'
 })
 export class OrderSummaryComponent {
-    
+
 }

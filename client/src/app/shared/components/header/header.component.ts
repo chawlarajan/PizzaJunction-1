@@ -4,6 +4,6 @@ import { Component, Input } from '@angular/core';
     selector: 'header-app',
     templateUrl: './header.component.html'
 })
-export class HeaderComponent{
+export class HeaderComponent {
 
 }
