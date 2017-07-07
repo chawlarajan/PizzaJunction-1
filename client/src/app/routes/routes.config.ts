@@ -7,7 +7,6 @@ export const RouteConfig: Routes = [
     { path: 'home', component: HomeComponent },
     { path: 'menu', loadChildren: '/app/menu/menu-module/menu.module#MenuModule' },     // path to the file # Modulename
     { path: 'login', loadChildren: '/app/login/login-module/login.module#LoginModule' },
-    // { path: 'login', component: LoginComponent },
     { path: 'error404', component: PageNotFoundComponent },
     { path: '', redirectTo: '/home', pathMatch: 'full' },
     { path: '**', redirectTo: '/error404', pathMatch: 'full' }

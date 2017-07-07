@@ -8,27 +8,19 @@ import { MenuItem } from './../../shared/models/menuitem';
     templateUrl: './menuitems.component.html'
 })
 export class MenuItemsComponent implements OnInit {
-    // @Input() item: MenuItem[];    
     constructor(private route: ActivatedRoute) { }
     menuItems: MenuItem[];
 
-    ngOnInit() {
-        this.menuItems = this.route.snapshot.data['menuItems'].GetMenuItems;
-        // this.menuItems = this.menuService.getMenuItems();     //uncomment if removed asynchronous getting of data
-        // subscribe as getting data asynchronoysly
-        // this.menuService.getMenuItems().subscribe(data => {
-        //     var newList = this.getNewList(data.GetMenuItems);
-        //     this.menuItems = data.GetMenuItems;
-        // });
+    ngOnInit() {        
+        this.menuItems = this.groupBy(this.route.snapshot.data['menuItems'].GetMenuItems, "ItemTitle");
+        console.log(this.menuItems);
     };
 
-    getNewList = function(arr: MenuItem){
-        let arrItems: MenuItem[];
-
-        // var index = arr.findIndex((inside: MenuItem) => (inside.ItemTitle === item.ItemTitle));
-        // this.arrItems.push(item);
-        // var index = this.arrItems.findIndex((inside: MenuItem) => (inside.ItemTitle === item.ItemTitle));
-
-        // console.log(this.arrItems);
+    groupBy = function (xs: MenuItem[], key: string) {
+        var objItems = xs.reduce(function (rv, x) {
+            (rv[x[key]] = rv[x[key]] || []).push(x);
+            return rv;
+        }, {});
+        return Object.keys(objItems).map((k) => objItems[k]);
     };
 }
