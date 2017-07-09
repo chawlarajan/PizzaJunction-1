@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { LoginRoutes } from './../loginroutes/login.route'
+import { LoginRoutes } from './../loginroutes/login.route';
 import { LoginComponent } from './../login.component';
 
 @NgModule({
-    imports:[
+    imports: [
         CommonModule,
         RouterModule.forChild(LoginRoutes)
     ],
@@ -14,6 +14,6 @@ import { LoginComponent } from './../login.component';
     ],
     providers: []
 })
-export class LoginModule{
+export class LoginModule {
 
 }

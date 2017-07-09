@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { MenuItem } from './../../shared/models/menuitem';
-//import { MenuService } from './../../shared/services/menu.service';       //removed as added in resolve
+// import { MenuService } from './../../shared/services/menu.service';       //removed as added in resolve
 
 @Component({
     selector: 'menu-items',

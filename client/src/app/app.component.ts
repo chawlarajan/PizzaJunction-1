@@ -6,6 +6,6 @@ import { Component } from '@angular/core';
 })
 export class AppComponent { }
 
-//To route from code
-//import { Router } from '@angular/router'
-//this.router.navigate(['/routeName']);
+// To route from code
+// import { Router } from '@angular/router'
+// this.router.navigate(['/routeName']);
