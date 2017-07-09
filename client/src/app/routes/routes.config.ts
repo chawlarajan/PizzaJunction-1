@@ -1,6 +1,5 @@
 import { Routes } from '@angular/router';
 import { HomeComponent } from './../home/home.component';
-import { LoginComponent } from './../login/login.component';
 import { PageNotFoundComponent } from './../error404/error404.component';
 
 export const RouteConfig: Routes = [
