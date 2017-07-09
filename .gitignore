@@ -1,2 +1,7 @@
 node_modules/
 *.map
+*.component.js
+*.module.js
+*.service.js
+client/src/app/orders/routes.js
+client/src/app/orders/table/table-data.js
