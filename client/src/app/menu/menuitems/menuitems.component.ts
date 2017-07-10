@@ -10,10 +10,11 @@ import { StorageService } from './../../shared/services/storage.service';
 })
 export class MenuItemsComponent implements OnInit {
     private menuItems: MenuItem[];
-    constructor(private route: ActivatedRoute, private storageService: StorageService) { }
+    constructor(private route: ActivatedRoute, private storageService: StorageService) {
+    }
 
     ngOnInit() {
-        this.menuItems = this.groupBy(this.route.snapshot.data['menuItems'].GetMenuItems, 'ItemTitle');
+        this.menuItems = this.groupBy(this.route.snapshot.data['menuItems'].GetMenuItems, 'ItemId');
     };
 
     groupBy = function (xs: MenuItem[], key: string): MenuItem[] {
@@ -25,20 +26,22 @@ export class MenuItemsComponent implements OnInit {
     };
 
     addToCart = function (item: MenuItem) {
-        let items = this.storageService.read('cartItems');
-        if (!items) {
-            items = [];
+        let cartItem = this.storageService.read('cartItems');
+        if (!cartItem) {
+            cartItem = {items: {}, totalQty: 0, totalPrice: 0};
         }
-        let storedItem = items[item.ItemId];
+        let items = cartItem.items;
+        
+        let storedItem = items[item.MenuItemId];
         if (!storedItem) {
-            storedItem = items[item.ItemId] = { item: item, qty: 0, price: 0 };
+            storedItem = items[item.MenuItemId] = { item: item, qty: 0, price: 0 };
         }
         storedItem.qty++;
         storedItem.price = storedItem.item.ItemPrice * storedItem.qty;
-        this.totalQty++;
-        this.totalPrice += storedItem.item.ItemPrice;
-        this.storageService.write('cartItems', items);
-        console.log(items);
+        cartItem.totalQty++;
+        cartItem.totalPrice += storedItem.item.ItemPrice;
+        
+        cartItem.items = items;
+        this.storageService.write('cartItems', cartItem);
     };
-
 }

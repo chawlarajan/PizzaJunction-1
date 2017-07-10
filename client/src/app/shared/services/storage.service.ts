@@ -2,8 +2,8 @@ export class StorageService {
     write(key: string, value: any) {
         if (value) {
             value = JSON.stringify(value);
-            sessionStorage.setItem(key, value);
         }
+        sessionStorage.setItem(key, value);
     }
 
     read<T>(key: string): T {

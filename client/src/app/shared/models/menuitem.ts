@@ -6,5 +6,11 @@ export interface MenuItem {
     ItemPrice?: string;
     Size?: number;
     MetricType?: string;
-    Description?: string;
+    Description?: string;    
+}
+
+export interface CartItem {
+    items: MenuItem,
+    totalPrice: number,
+    totalQty: number
 }
