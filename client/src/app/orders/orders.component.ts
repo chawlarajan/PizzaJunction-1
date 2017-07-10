@@ -4,5 +4,4 @@ import { Component } from '@angular/core';
     templateUrl: './orders.component.html'
 })
 export class OrdersComponent {
-
 }

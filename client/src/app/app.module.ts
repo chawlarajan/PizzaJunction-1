@@ -15,7 +15,6 @@ import { MenuItemsResolver } from './menu/menuitems-resolver/menuItems-resolver.
 import { MenuService } from './shared/services/menu.service';
 
 // Models
-import { MenuItem } from './shared/models/menuitem';
 
 // Routing
 import { RouteConfig } from './routes/routes.config';
@@ -36,7 +35,6 @@ import { RouteConfig } from './routes/routes.config';
   ],
   providers: [
     MenuService,
-    MenuItem,
     MenuItemsResolver
   ],
   bootstrap: [ AppComponent ]

@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 // import { ActivatedRoute } from '@angular/router';
+import { MenuItem } from './../../shared/models/menuitem';
 
 import 'rxjs/add/operator/map';
 import 'rxjs/add/observable/throw';
@@ -18,7 +19,7 @@ export class MenuService {
         // [routerLink]="['/path', param]"
     }
 
-    getMenuItems(): Observable<any> {
+    getMenuItems(): Observable<MenuItem[]> {
         return this.http.get(apiPath + 'MenuItems/getMenuItems')
             .map((res: Response) => {
                 return res.json();

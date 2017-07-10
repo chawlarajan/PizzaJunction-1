@@ -5,6 +5,8 @@ import { MenuRoutes } from './../menuroutes/menu.routes';
 import { MenuComponent } from './../menu.component';
 import { MenuItemsComponent } from './../menuitems/menuitems.component';
 import { OrderSummaryComponent } from './../ordersummary/ordersummary.component';
+import { CheckoutComponent } from './../checkout/checkout.component';
+import { StorageService } from './../../shared/services/storage.service';
 
 @NgModule({
     imports: [
@@ -14,10 +16,11 @@ import { OrderSummaryComponent } from './../ordersummary/ordersummary.component'
     declarations: [
         MenuComponent,
         MenuItemsComponent,
-        OrderSummaryComponent
+        OrderSummaryComponent,
+        CheckoutComponent
     ],
-    providers: []
+    providers: [
+        StorageService
+    ]
 })
-export class MenuModule {
-
-}
+export class MenuModule { }

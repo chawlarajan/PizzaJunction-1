@@ -1,10 +1,10 @@
-export class MenuItem {
+export interface MenuItem {
     MenuItemId: number;
     ItemId: number;
     ItemTitle: string;
-    ItemDescription: string;
-    ItemPrice: string;
-    Size: number;
-    MetricType: string;
-    Description: string;
+    ItemDescription?: string;
+    ItemPrice?: string;
+    Size?: number;
+    MetricType?: string;
+    Description?: string;
 }

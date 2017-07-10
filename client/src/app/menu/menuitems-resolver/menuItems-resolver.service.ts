@@ -1,15 +1,15 @@
 import { Injectable } from '@angular/core';
 import { Resolve } from '@angular/router';
-// import { MenuItem } from './../../shared/models/menuitem';
 import { MenuService } from './../../shared/services/menu.service';
+import { MenuItem } from './../../shared/models/menuitem';
+import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class MenuItemsResolver implements Resolve<any> {
     constructor (private menuService: MenuService) {
-
     }
 
-    resolve() {
+    resolve(): Observable<MenuItem[]> {
         return this.menuService.getMenuItems().map(items => items);
     }
 }
