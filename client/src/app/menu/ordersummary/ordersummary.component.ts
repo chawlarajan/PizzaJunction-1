@@ -13,21 +13,29 @@ export class OrderSummaryComponent {
     private deliveryFee: number = 0;
     private gstCharges: number = 0;
     private gstAmount: number = GSTAmount;
-    constructor(private storageService: StorageService) {        
+    constructor(private storageService: StorageService) {
+        this.bindCart();
+    }
+
+    bindCart = function () {
         let items = <CartItem>this.storageService.read('cartItems');
-        if(items) {
+        if (items) {
             this.cartItems = this.generateArray(items);
             this.subTotal = items.totalPrice;
+            this.gstCharges = this.gstAmount*this.subTotal/100;
         }
     }
 
-    clearCart = function() {
+    clearCart = function () {
         this.storageService.clear();
+        this.cartItems = {};
+        this.subTotal = 0;
+
     }
 
     generateArray = function (menuItems: any): MenuItem[] {
         var arr = [];
-        for(var id in menuItems.items){
+        for (var id in menuItems.items) {
             arr.push(menuItems.items[id]);
         }
         return arr;
