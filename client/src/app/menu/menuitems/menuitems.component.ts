@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { MenuItem } from './../../shared/models/menuitem';
+import { MenuItem, CartItem } from './../../shared/models/menuitem';
 import { StorageService } from './../../shared/services/storage.service';
 
 @Component({
@@ -10,8 +10,10 @@ import { StorageService } from './../../shared/services/storage.service';
 })
 export class MenuItemsComponent implements OnInit {
     private menuItems: MenuItem[];
+    @Output() cartChanged: EventEmitter<CartItem>;
     constructor(private route: ActivatedRoute, private storageService: StorageService) {
-    }
+        this.cartChanged = new EventEmitter<CartItem>();
+    };
 
     ngOnInit() {
         this.menuItems = this.groupBy(this.route.snapshot.data['menuItems'].GetMenuItems, 'ItemId');
@@ -43,5 +45,7 @@ export class MenuItemsComponent implements OnInit {
         
         cartItem.items = items;
         this.storageService.write('cartItems', cartItem);
+
+        this.cartChanged.emit(cartItem);
     };
 }

@@ -461,6 +461,7 @@ hr {
     margin-bottom: 20px;
     background: #fff;
     border: 1px solid #e8e8e8;
+    min-height: 290px;
 }
 
     .product-col.list .image {

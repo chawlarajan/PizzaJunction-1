@@ -6,11 +6,11 @@
     <div class="row">
         <div class="col-md-9">
             <div class="row">
-                <menu-items></menu-items>
+                <menu-items (cartChanged)="onCartChange($event)"></menu-items>
             </div>
         </div>
         <div class="col-md-3">
-            <order-summary></order-summary>
+            <order-summary [cartDetails]="cartItem"></order-summary>
             <!-- Categories Links Starts -->
             <h3 class="side-heading">Categories</h3>
             <div class="list-group">
