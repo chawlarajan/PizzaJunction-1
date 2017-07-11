@@ -6,6 +6,9 @@
     <!-- Google Map Starts -->
     <div id="map-wrapper">
         <div id="map"></div>
+        <agm-map [latitude]: "lat" [longitude]="lng">
+            <agm-marker [latitude]: "lat" [longitude]="lng"></agm-marker>
+        </agm-map>
     </div>
     <!-- Google Map Ends -->
     <!-- Starts -->
