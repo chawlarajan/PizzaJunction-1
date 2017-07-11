@@ -1,9 +1,13 @@
 <h3 class="side-heading">
-    Order Summary</h3>
+    Order Summary
+    <div id="divClearCart" class="desc pull-right" (click)="clearCart()" title="Clear All Items">
+        <i class="fa fa-trash"></i>
+    </div>
+</h3>
 <div class="list-group">
     <div class="list-group-item">
         <div class="order-summary">
-            <div class="caption">
+            <div class="caption" *ngIf="(cartDetails && cartDetails.totalQty)">
                 <div class="line-item" *ngFor="let item of generateArray(cartDetails)">
                     <div class="desc pull-left" *ngIf="item">
                         {{item.qty}} X {{item.item.ItemTitle}}, {{item.item.Size}}{{item.item.MetricType == "Inches" ? "\"" : ""}} {{item.item.Description}}
@@ -11,9 +15,6 @@
                     <div class="amount pull-left" *ngIf="item">
                         {{item.price | currency: 'USD': true}}
                     </div>
-                </div>
-                <div class="amount pull-left" *ngIf="!(cartDetails && cartDetails.totalQty)">
-                    No item selected
                 </div>
                 <!--Kept as sample data
                     <div class="line-item">
@@ -39,18 +40,15 @@
                 <div class="tax line-item">
                     <div class="desc pull-left">GST ({{gstAmount}}%)</div>
                     <div class="amount pull-right">
-                        {{ (gstAmount * cartDetails?.totalPrice / 100) ? 
-                            (gstAmount * cartDetails?.totalPrice / 100): 0 
-                            | currency:'USD': true }}
+                        {{ (gstAmount * cartDetails?.totalPrice / 100) ? (gstAmount * cartDetails?.totalPrice / 100): 0 | currency:'USD': true }}
                     </div>
                     <!--5% of total sum-->
                 </div>
                 <div class="total line-item">
                     <div class="desc pull-left last">Total</div>
                     <div class="amount pull-right">
-                        {{ (cartDetails?.totalPrice + deliveryFee + (gstAmount * cartDetails?.totalPrice / 100)) ? 
-                            (cartDetails?.totalPrice + deliveryFee + (gstAmount * cartDetails?.totalPrice / 100)) : 0  
-                            | currency:'USD': true }}
+                        {{ (cartDetails?.totalPrice + deliveryFee + (gstAmount * cartDetails?.totalPrice / 100)) ? (cartDetails?.totalPrice + deliveryFee
+                        + (gstAmount * cartDetails?.totalPrice / 100)) : 0 | currency:'USD': true }}
                     </div>
                     <!--Get total sum of order including Delivery Fee, GST-->
                 </div>
@@ -59,10 +57,13 @@
                         Checkout <i class="fa fa-shopping-cart"></i>
                     </button>
                 </div>
-                <div class="cart-button button-group">
-                    <button type="button" class="btn btn-cart" (click)="clearCart()">
-                        Clear  <i class="fa fa-trash"></i>
-                    </button>
+            </div>
+            <div class="caption" *ngIf="!(cartDetails && cartDetails.totalQty)">
+                <div class="line-item">
+                    <div class="cart-button button-group">
+                        No item selected
+                        <br>
+                    </div>
                 </div>
             </div>
         </div>

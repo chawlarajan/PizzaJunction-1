@@ -5,7 +5,10 @@ import { GSTAmount } from './../../shared/components/globals/global';
 
 @Component({
     selector: 'order-summary',
-    templateUrl: './ordersummary.component.html'
+    templateUrl: './ordersummary.component.html',
+    styles: [`
+        #divClearCart { cursor: pointer; }
+    `]
 })
 export class OrderSummaryComponent implements OnInit {
     @Input() cartDetails: CartItem;
