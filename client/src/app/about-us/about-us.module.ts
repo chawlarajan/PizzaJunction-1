@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { AboutUs } from './about-us.component';
 import { RouterModule, Routes } from '@angular/router';
 
-const aboutUsRoute: Routes = [{ path:'', component: AboutUs}];
+const aboutUsRoute: Routes = [{ path: '', component: AboutUs }];
 
 @NgModule({
     imports: [
@@ -13,4 +13,4 @@ const aboutUsRoute: Routes = [{ path:'', component: AboutUs}];
     ],
     providers: []
 })
-export class AboutUsModule{}
+export class AboutUsModule { }
