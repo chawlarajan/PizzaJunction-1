@@ -11,37 +11,56 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var router_1 = require("@angular/router");
-//import { MenuService } from './../../shared/services/menu.service';       //removed as added in resolve
+var storage_service_1 = require("./../../shared/services/storage.service");
 var MenuItemsComponent = (function () {
-    //@Input() item: MenuItem[];    
-    function MenuItemsComponent(route) {
+    function MenuItemsComponent(route, storageService) {
         this.route = route;
-        this.getNewList = function (arr) {
-            var arrItems;
-            //var index = arr.findIndex((inside: MenuItem) => (inside.ItemTitle === item.ItemTitle));
-            //this.arrItems.push(item);
-            //var index = this.arrItems.findIndex((inside: MenuItem) => (inside.ItemTitle === item.ItemTitle));
-            //console.log(this.arrItems);
+        this.storageService = storageService;
+        this.groupBy = function (xs, key) {
+            var objItems = xs.reduce(function (rv, x) {
+                (rv[x[key]] = rv[x[key]] || []).push(x);
+                return rv;
+            }, {});
+            return Object.keys(objItems).map(function (k) { return objItems[k]; });
         };
+        this.addToCart = function (item) {
+            var cartItem = this.storageService.read('cartItems');
+            if (!cartItem) {
+                cartItem = { items: {}, totalQty: 0, totalPrice: 0 };
+            }
+            var items = cartItem.items;
+            var storedItem = items[item.MenuItemId];
+            if (!storedItem) {
+                storedItem = items[item.MenuItemId] = { item: item, qty: 0, price: 0 };
+            }
+            storedItem.qty++;
+            storedItem.price = storedItem.item.ItemPrice * storedItem.qty;
+            cartItem.totalQty++;
+            cartItem.totalPrice += storedItem.item.ItemPrice;
+            cartItem.items = items;
+            this.storageService.write('cartItems', cartItem);
+            this.cartChanged.emit(cartItem);
+        };
+        this.cartChanged = new core_1.EventEmitter();
     }
+    ;
     MenuItemsComponent.prototype.ngOnInit = function () {
-        this.menuItems = this.route.snapshot.data['menuItems'].GetMenuItems;
-        //this.menuItems = this.menuService.getMenuItems();     //uncomment if removed asynchronous getting of data
-        //subscribe as getting data asynchronoysly
-        // this.menuService.getMenuItems().subscribe(data => {
-        //     //var newList = this.getNewList(data.GetMenuItems);
-        //     this.menuItems = data.GetMenuItems;
-        // });
+        this.menuItems = this.groupBy(this.route.snapshot.data['menuItems'].GetMenuItems, 'ItemId');
     };
     ;
     return MenuItemsComponent;
 }());
+__decorate([
+    core_1.Output(),
+    __metadata("design:type", core_1.EventEmitter)
+], MenuItemsComponent.prototype, "cartChanged", void 0);
 MenuItemsComponent = __decorate([
     core_1.Component({
         selector: 'menu-items',
-        templateUrl: './menuitems.component.html'
+        templateUrl: './menuitems.component.html',
+        providers: [storage_service_1.StorageService]
     }),
-    __metadata("design:paramtypes", [router_1.ActivatedRoute])
+    __metadata("design:paramtypes", [router_1.ActivatedRoute, storage_service_1.StorageService])
 ], MenuItemsComponent);
 exports.MenuItemsComponent = MenuItemsComponent;
 //# sourceMappingURL=menuitems.component.js.map

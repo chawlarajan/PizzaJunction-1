@@ -10,7 +10,6 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
-//import { MenuItem } from './../../shared/models/menuitem';
 var menu_service_1 = require("./../../shared/services/menu.service");
 var MenuItemsResolver = (function () {
     function MenuItemsResolver(menuService) {

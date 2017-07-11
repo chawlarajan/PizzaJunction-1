@@ -12,7 +12,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var http_1 = require("@angular/http");
 var Observable_1 = require("rxjs/Observable");
-//import { ActivatedRoute } from '@angular/router';
 require("rxjs/add/operator/map");
 require("rxjs/add/observable/throw");
 require("rxjs/add/operator/catch");
@@ -20,10 +19,10 @@ var global_1 = require("./../components/globals/global");
 var MenuService = (function () {
     function MenuService(http) {
         this.http = http;
-        //to get id from route/url
-        //, private route: ActivatedRoute
-        //this.route.snapshot.params['id'];
-        //[routerLink]="['/path', param]"
+        // to get id from route/url
+        // private route: ActivatedRoute
+        // this.route.snapshot.params['id'];
+        // [routerLink]="['/path', param]"
     }
     MenuService.prototype.getMenuItems = function () {
         return this.http.get(global_1.apiPath + 'MenuItems/getMenuItems')

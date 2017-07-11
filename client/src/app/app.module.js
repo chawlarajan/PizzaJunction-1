@@ -11,18 +11,17 @@ var platform_browser_1 = require("@angular/platform-browser");
 var forms_1 = require("@angular/forms");
 var http_1 = require("@angular/http");
 var router_1 = require("@angular/router");
-//Components
+// Components
 var app_component_1 = require("./app.component");
 var header_component_1 = require("./shared/components/header/header.component");
 var footer_component_1 = require("./shared/components/footer/footer.component");
 var home_component_1 = require("./home/home.component");
 var error404_component_1 = require("./error404/error404.component");
 var menuItems_resolver_service_1 = require("./menu/menuitems-resolver/menuItems-resolver.service");
-//Services
+// Services
 var menu_service_1 = require("./shared/services/menu.service");
-//Models
-var menuitem_1 = require("./shared/models/menuitem");
-//Routing
+// Models
+// Routing
 var routes_config_1 = require("./routes/routes.config");
 var AppModule = (function () {
     function AppModule() {
@@ -46,7 +45,6 @@ AppModule = __decorate([
         ],
         providers: [
             menu_service_1.MenuService,
-            menuitem_1.MenuItem,
             menuItems_resolver_service_1.MenuItemsResolver
         ],
         bootstrap: [app_component_1.AppComponent]

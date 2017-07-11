@@ -6,7 +6,7 @@ exports.RouteConfig = [
     { path: 'home', component: home_component_1.HomeComponent },
     { path: 'menu', loadChildren: '/app/menu/menu-module/menu.module#MenuModule' },
     { path: 'login', loadChildren: '/app/login/login-module/login.module#LoginModule' },
-    //{ path: 'login', component: LoginComponent },
+    { path: 'orders', loadChildren: '/app/orders/orders-module/orders.module#OrdersModule' },
     { path: 'error404', component: error404_component_1.PageNotFoundComponent },
     { path: '', redirectTo: '/home', pathMatch: 'full' },
     { path: '**', redirectTo: '/error404', pathMatch: 'full' }

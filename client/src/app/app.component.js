@@ -19,7 +19,7 @@ AppComponent = __decorate([
     })
 ], AppComponent);
 exports.AppComponent = AppComponent;
-//To route from code
-//import { Router } from '@angular/router'
-//this.router.navigate(['/routeName']);
+// To route from code
+// import { Router } from '@angular/router'
+// this.router.navigate(['/routeName']);
 //# sourceMappingURL=app.component.js.map

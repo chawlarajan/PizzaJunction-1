@@ -9,6 +9,9 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var MenuComponent = (function () {
     function MenuComponent() {
+        this.onCartChange = function (cartItem) {
+            this.cartItem = cartItem;
+        };
     }
     return MenuComponent;
 }());
