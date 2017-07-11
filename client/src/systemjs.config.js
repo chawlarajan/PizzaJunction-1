@@ -28,6 +28,7 @@
       '@angular/forms': 'npm:@angular/forms/bundles/forms.umd.js',
       '@angular/upgrade': 'npm:@angular/upgrade/bundles/upgrade.umd.js',
       '@angular/upgrade/static': 'npm:@angular/upgrade/bundles/upgrade-static.umd.js',
+      '@agm/core':'npm:@agm/core/core.umd.js',
 
       // other libraries
       'ngx-bootstrap': 'node_modules/ngx-bootstrap',

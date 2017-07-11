@@ -7,6 +7,8 @@ import { MenuItemsComponent } from './../menuitems/menuitems.component';
 import { OrderSummaryComponent } from './../ordersummary/ordersummary.component';
 import { CheckoutComponent } from './../checkout/checkout.component';
 import { StorageService } from './../../shared/services/storage.service';
+import { Globals } from './../../shared/components/globals/global';
+import { OrderConfirmation } from './../../menu/order-confirmation/order-confirmation.component';
 
 @NgModule({
     imports: [
@@ -17,10 +19,12 @@ import { StorageService } from './../../shared/services/storage.service';
         MenuComponent,
         MenuItemsComponent,
         OrderSummaryComponent,
-        CheckoutComponent
+        CheckoutComponent,
+        OrderConfirmation
     ],
     providers: [
-        StorageService
+        StorageService,
+        Globals
     ]
 })
 export class MenuModule { }

@@ -33,7 +33,6 @@ export class MenuItemsComponent implements OnInit {
             cartItem = {items: {}, totalQty: 0, totalPrice: 0};
         }
         let items = cartItem.items;
-        
         let storedItem = items[item.MenuItemId];
         if (!storedItem) {
             storedItem = items[item.MenuItemId] = { item: item, qty: 0, price: 0 };
@@ -42,10 +41,8 @@ export class MenuItemsComponent implements OnInit {
         storedItem.price = storedItem.item.ItemPrice * storedItem.qty;
         cartItem.totalQty++;
         cartItem.totalPrice += storedItem.item.ItemPrice;
-        
         cartItem.items = items;
         this.storageService.write('cartItems', cartItem);
-
         this.cartChanged.emit(cartItem);
     };
 }
