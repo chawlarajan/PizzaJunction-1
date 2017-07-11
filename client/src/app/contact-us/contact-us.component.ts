@@ -7,7 +7,7 @@ import { Component } from '@angular/core';
     `]
 })
 export class ContactUs {
-    private title: string = 'Pizza Junction Snacks';
-    private lat: number = 49.054765;
-    private lng: number = -122.325902;
+    title: string = 'Pizza Junction Snacks';
+    lat: number = 49.054765;
+    lng: number = -122.325902;
 }

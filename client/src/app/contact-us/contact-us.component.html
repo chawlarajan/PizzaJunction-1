@@ -5,9 +5,13 @@
     <!-- Main Heading Ends -->
     <!-- Google Map Starts -->
     <div id="map-wrapper">
-        <div id="map"></div>
-        <agm-map [latitude]: "lat" [longitude]="lng">
-            <agm-marker [latitude]: "lat" [longitude]="lng"></agm-marker>
+        <!--<div id="map"></div>-->
+        <agm-map [latitude]="lat" [longitude]="lng" > <!--[zoom]="zoom" [zoomControl]="false"-->
+            <agm-marker [latitude]="lat" [longitude]="lng">
+                <agm-info-window>
+                    <strong>{{title}}</strong>
+                </agm-info-window>
+            </agm-marker>
         </agm-map>
     </div>
     <!-- Google Map Ends -->
