@@ -7,6 +7,7 @@ import { MenuItemsComponent } from './../menuitems/menuitems.component';
 import { OrderSummaryComponent } from './../ordersummary/ordersummary.component';
 import { CheckoutComponent } from './../checkout/checkout.component';
 import { StorageService } from './../../shared/services/storage.service';
+import { Globals } from './../../shared/components/globals/global';
 
 @NgModule({
     imports: [
@@ -20,7 +21,8 @@ import { StorageService } from './../../shared/services/storage.service';
         CheckoutComponent
     ],
     providers: [
-        StorageService
+        StorageService,
+        Globals
     ]
 })
 export class MenuModule { }

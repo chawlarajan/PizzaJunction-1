@@ -1,1 +1,74 @@
-Checkout
+<section class="products-list">
+    <!-- Heading Starts -->
+    <h2 class="product-head">Checkout</h2>
+</section>
+<h3 class="side-heading">
+    Order Summary
+</h3>
+<div class="list-group">
+    <div class="list-group-item">
+        <div class="order-summary">
+            <div class="caption" *ngIf="(cartDetails && cartDetails.totalQty)">
+                <div class="line-item row" *ngFor="let item of globals.generateArray(cartDetails)">
+                    <div class="desc pull-left col-md-3 col-sm-3" >
+                        {{item.item.Size}}{{item.item.MetricType == "Inches" ? "\"" : ""}} {{item.item.Description}} {{item.item.ItemTitle}}
+                    </div>
+                    <div class="col-md-1 col-sm-1">
+                        {{ item.qty }}
+                    </div>
+                    <div class="col-md-1 col-sm-1">
+                        {{item.price/item.qty | currency: 'USD': true}}
+                    </div>
+                    <div class="col-md-7 col-sm-7">
+                        {{item.price | currency: 'USD': true}}
+                    </div>
+                </div>
+                
+                <div class="line-item row">
+                    <div class="desc divider col-md-12 col-sm-12"></div>
+                    <div class="amount pull-left"></div>
+                </div>
+                <div class="sub-total line-item row">
+                    <div class="col-md-3 col-sm-3"></div>
+                    <div class="col-md-2 col-sm-2">Sub Total</div>
+                    <div class="col-md-7 col-sm-7">
+                        {{cartDetails?.totalPrice | currency: 'USD': true}}
+                    </div>
+                    <!--Get total sum of order-->
+                </div>
+                <div class="delivery line-item row">
+                    <div class="col-md-3 col-sm-3"></div>
+                    <div class="col-md-2 col-sm-2">Delivery Fee</div>
+                    <div class="col-md-7 col-sm-7">{{ deliveryFee | currency:'USD': true }}</div>
+                    <!--Calculate as per distance-->
+                </div>
+                <div class="tax line-item row">
+                    <div class="col-md-3 col-sm-3"></div>
+                    <div class="col-md-2 col-sm-2">GST ({{globals.getGSTAmount()}}%)</div>
+                    <div class="col-md-7 col-sm-7">
+                        {{ ((globals.getGSTAmount() * cartDetails?.totalPrice / 100) ? (globals.getGSTAmount() * cartDetails?.totalPrice / 100): 0) | currency:'USD': true }}
+                    </div>
+                    <!--5% of total sum-->
+                </div>
+                <div class="total line-item row">
+                    <div class="col-md-3 col-sm-3"></div>
+                    <div class="col-md-2 col-sm-2">Total</div>
+                    <div class="col-md-7 col-sm-7">
+                        {{ ((cartDetails?.totalPrice + deliveryFee + (globals.getGSTAmount() * cartDetails?.totalPrice / 100)) ? (cartDetails?.totalPrice + deliveryFee
+                        + (globals.getGSTAmount() * cartDetails?.totalPrice / 100)) : 0) | currency:'USD': true }}
+                    </div>
+                    <!--Get total sum of order including Delivery Fee, GST-->
+                </div>                
+            </div>            
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6 col-cm-6">
+        <h2>Billing Address</h2>
+
+    </div>
+    <div class="col-md-6 col-cm-6">
+        <h2>Payment Options</h2>
+    </div>
+</div>
