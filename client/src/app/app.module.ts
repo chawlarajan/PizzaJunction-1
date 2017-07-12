@@ -11,7 +11,7 @@ import { FooterComponent } from './shared/components/footer/footer.component';
 import { HomeComponent } from './home/home.component';
 import { PageNotFoundComponent } from './error404/error404.component';
 import { MenuItemsResolver } from './menu/menuitems-resolver/menuItems-resolver.service';
-
+import { DeliveryAddress } from './delivery-address/delivery-address.component';
 // Services
 import { MenuService } from './shared/services/menu.service';
 
@@ -32,7 +32,8 @@ import { RouteConfig } from './routes/routes.config';
     HeaderComponent,
     FooterComponent,
     HomeComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    DeliveryAddress
   ],
   providers: [
     MenuService,
