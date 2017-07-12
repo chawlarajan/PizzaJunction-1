@@ -6,11 +6,9 @@ const GSTAmount = 5;
 
 export class Globals {
     generateArray = function (menuItems: any): MenuItem[] {
-        let arr = [];
+        let arr: any[] = [];
         if (menuItems) {
-            for (let id in menuItems.items) {
-                arr.push(menuItems.items[id]);
-            }
+            Object.keys(menuItems.items).map(id => arr.push(menuItems.items[id]));
         }
         return arr;
     };
