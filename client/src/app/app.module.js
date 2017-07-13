@@ -18,8 +18,11 @@ var footer_component_1 = require("./shared/components/footer/footer.component");
 var home_component_1 = require("./home/home.component");
 var error404_component_1 = require("./error404/error404.component");
 var menuItems_resolver_service_1 = require("./menu/menuitems-resolver/menuItems-resolver.service");
+var delivery_address_component_1 = require("./delivery-address/delivery-address.component");
+var ng_pick_datetime_1 = require("ng-pick-datetime");
 // Services
 var menu_service_1 = require("./shared/services/menu.service");
+var storage_service_1 = require("./shared/services/storage.service");
 // Models
 // Routing
 var routes_config_1 = require("./routes/routes.config");
@@ -34,6 +37,7 @@ AppModule = __decorate([
             platform_browser_1.BrowserModule,
             forms_1.FormsModule,
             http_1.HttpModule,
+            ng_pick_datetime_1.DateTimePickerModule,
             router_1.RouterModule.forRoot(routes_config_1.RouteConfig),
         ],
         declarations: [
@@ -41,11 +45,13 @@ AppModule = __decorate([
             header_component_1.HeaderComponent,
             footer_component_1.FooterComponent,
             home_component_1.HomeComponent,
-            error404_component_1.PageNotFoundComponent
+            error404_component_1.PageNotFoundComponent,
+            delivery_address_component_1.DeliveryAddress
         ],
         providers: [
             menu_service_1.MenuService,
-            menuItems_resolver_service_1.MenuItemsResolver
+            menuItems_resolver_service_1.MenuItemsResolver,
+            storage_service_1.StorageService
         ],
         bootstrap: [app_component_1.AppComponent]
     })

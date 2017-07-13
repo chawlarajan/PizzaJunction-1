@@ -7,9 +7,7 @@ var Globals = (function () {
         this.generateArray = function (menuItems) {
             var arr = [];
             if (menuItems) {
-                for (var id in menuItems.items) {
-                    arr.push(menuItems.items[id]);
-                }
+                Object.keys(menuItems.items).map(function (id) { return arr.push(menuItems.items[id]); });
             }
             return arr;
         };

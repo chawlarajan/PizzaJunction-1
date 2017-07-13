@@ -5,7 +5,7 @@ import { CartItem } from './../shared/models/menuitem';
     templateUrl: './menu.component.html'
 })
 export class MenuComponent {
-    private cartItem: CartItem;
+    cartItem: CartItem;
     onCartChange = function(cartItem: CartItem){
         this.cartItem = cartItem;
     };

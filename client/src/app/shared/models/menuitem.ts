@@ -10,7 +10,7 @@ export interface MenuItem {
 };
 
 export interface CartItem {
-    items: MenuItem,
-    totalPrice: number,
-    totalQty: number
+    items: MenuItem;
+    totalPrice: number;
+    totalQty: number;
 };

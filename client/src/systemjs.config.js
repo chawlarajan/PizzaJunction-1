@@ -28,12 +28,14 @@
       '@angular/forms': 'npm:@angular/forms/bundles/forms.umd.js',
       '@angular/upgrade': 'npm:@angular/upgrade/bundles/upgrade.umd.js',
       '@angular/upgrade/static': 'npm:@angular/upgrade/bundles/upgrade-static.umd.js',
-      '@agm/core':'npm:@agm/core/core.umd.js',
+      '@agm/core': 'npm:@agm/core/core.umd.js',
+      'ng-pick-datetime': 'npm:ng-pick-datetime',
+      'moment': 'npm:moment',
 
       // other libraries
       'ngx-bootstrap': 'node_modules/ngx-bootstrap',
       'ng2-table': 'node_modules/ng2-table',
-      'rxjs':                      'npm:rxjs',
+      'rxjs': 'npm:rxjs',
       'angular-in-memory-web-api': 'npm:angular-in-memory-web-api/bundles/in-memory-web-api.umd.js',
 
     },
@@ -47,6 +49,16 @@
             loader: 'systemjs-angular-loader.js'
           }
         }
+      },
+      // the picker 
+      'ng-pick-datetime': {
+        main: './picker.bundle.js',
+        defaultExtension: 'js'
+      },
+      // momentJS 
+      'moment': {
+        main: 'moment.js',
+        defaultExtension: 'js'
       },
       rxjs: {
         defaultExtension: 'js'
