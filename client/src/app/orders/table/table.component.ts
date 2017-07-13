@@ -1,24 +1,32 @@
-import { Component, OnInit } from '@angular/core';
-import { TableData } from './table-data';
+ import { Component, OnInit } from '@angular/core';
+
+import { IOrdersViewModel } from './orders.viewmodel';
+import { OrderService } from './../order.service';
+import { Order } from './../../shared/models/order';
+import * as io from 'socket.io-client'
 
 @Component({
   selector: 'table',
-  templateUrl: './table.component.html'
+  templateUrl: './table.component.html',
+  styleUrls: ['./table.component.css'],
+  providers: [OrderService]  
 })
 export class TableComponent implements OnInit {
+  private url: string = "http://localhost:3000";
+  private socket: any;
+
   public rows:Array<any> = [];
   public columns:Array<any> = [
-    {title: 'Name', name: 'name', filtering: {filterString: '', placeholder: 'Filter by name'}},
-    {
-      title: 'Position',
-      name: 'position',
-      sort: false,
-      filtering: {filterString: '', placeholder: 'Filter by position'}
-    },
-    {title: 'Office', className: ['office-header', 'text-success'], name: 'office', sort: 'asc'},
-    {title: 'Extn.', name: 'ext', sort: '', filtering: {filterString: '', placeholder: 'Filter by extn.'}},
-    {title: 'Start date', className: 'text-warning', name: 'startDate'},
-    {title: 'Salary ($)', name: 'salary'}
+    {title: 'Order #', name: 'OrderId', sort: false},
+    {title: 'Customer', name: 'CustomerInfo', sort: false},
+    {title: 'Delivery Address', name: 'DeliveryAddress', sort: false},
+    {title: 'Distance', name: 'Distance', sort: false},
+    {title: 'Order Type', name: 'DeliveryMode', sort: false},
+    {title: 'Payment Mode', name: 'PaymentMode', sort: false},
+    {title: 'Delivery Time', name: 'DeliveryTime', sort: false},
+    {title: '# Items', name: 'NumberOfItems', sort: false},
+    {title: 'Amount', name: 'TotalAmount', sort: false},
+    {title: 'Actions', name: 'actions'}
   ];
   public page:number = 1;
   public itemsPerPage:number = 10;
@@ -33,14 +41,63 @@ export class TableComponent implements OnInit {
     className: ['table-striped', 'table-bordered']
   };
 
-  private data:Array<any> = TableData;
+  private data: IOrdersViewModel[] = [];
 
-  public constructor() {
-    this.length = this.data.length;
-  }
+  public constructor(private orderService: OrderService) {}
 
   public ngOnInit():void {
+    this.orderService.getPendingOrders()
+    .then(this._onDataRecieved.bind(this));
+
+    this.socket = io.connect(this.url,  {reconnection: true});
+
+    this.socket.on('connect', function () {
+      console.log('Connected!');
+    });
+
+    this.socket.on('disconnect', function() {
+        console.log('disconnected');
+    });
+
+    this.socket.emit('pizza junction store', {
+        message: "Joining Store from Pizza",
+        username: "soctaste",
+        store: 1234
+    });
+
+    this.socket.on('notifyStore', (data: any) => {
+        if (data.orderId) {
+          console.log(data.orderId);
+          
+          this.orderService.getOrderById(data.orderId)
+           .then(this._onDataRecieved.bind(this));
+        } else {
+            console.log("There is a problem:", data);
+        }
+    });
+  }
+
+  private _onDataRecieved(orders: Order[]) {
+    this.data = this.data.concat(this._transformData(orders));
+    this.length = this.data.length;
     this.onChangeTable(this.config);
+  }
+
+  private _transformData(orders: Order[]): IOrdersViewModel[]  {
+    return orders.map((order: Order) => {
+      return  {
+        OrderId: order.OrderId,
+        CustomerInfo: order.CustomerName + "<br/>" + order.CustomerPhone,    
+        DeliveryAddress: order.DeliveryAddress,
+        Distance:  order.Distance || "",
+        DeliveryMode:  order.DeliveryMode,
+        PaymentMode:  order.PaymentMode,
+        DeliveryTime:  order.DeliveryTime,
+        NumberOfItems: order.NumberOfItems || 0,
+        TotalAmount: order.OrderAmount,
+        actions: '<button class="actionButton accept">ACCEPT</button> <button class="actionButton reject">REJECT</button>'
+      }
+    });
   }
 
   public changePage(page:any, data:Array<any> = this.data):Array<any> {

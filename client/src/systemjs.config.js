@@ -30,6 +30,7 @@
       '@angular/upgrade/static': 'npm:@angular/upgrade/bundles/upgrade-static.umd.js',
 
       // other libraries
+      "socket.io-client": "node_modules/socket.io-client",
       'ngx-bootstrap': 'node_modules/ngx-bootstrap',
       'ng2-table': 'node_modules/ng2-table',
       'rxjs':                      'npm:rxjs',
@@ -54,6 +55,7 @@
       'ng2-table': {
         defaultExtension: 'js'
       },
+      'socket.io-client': {main: 'dist/socket.io.js' ,defaultExtension: 'js'}
     }
   });
 })(this);

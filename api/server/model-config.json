@@ -38,5 +38,9 @@
   "MenuItem": {
     "dataSource": "sqlserverdb",
     "public": true
+  },
+  "Order": {
+    "dataSource": "sqlserverdb",
+    "public": true
   }
 }

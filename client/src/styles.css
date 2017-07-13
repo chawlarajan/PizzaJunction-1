@@ -4,6 +4,24 @@ body {
     font: 14px/22px 'Open Sans', Arial, Helvetica, sans-serif;
 }
 
+.actionButton {
+    height: 60px;
+    width: 90px;
+    color: #fff;
+}
+
+.accept {
+    background-color: green;
+}
+
+.reject {
+    background-color: red;
+}
+
+.itemCount {
+    color: #fff;
+}
+
 /* Standard Styles Starts */
 
 a,

@@ -1,0 +1,12 @@
+.actionButton {
+    height: 40px;
+    width: 60px;
+}
+
+.actionButton .accept {
+    background-color: green;
+}
+
+.actionButton .reject {
+    background-color: red;
+}

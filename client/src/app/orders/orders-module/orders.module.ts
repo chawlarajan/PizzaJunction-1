@@ -9,6 +9,7 @@ import { PaginationModule } from 'ngx-bootstrap';
 import { OrdersRoutes } from './../routes';
 import { OrdersComponent } from './../orders.component';
 import { TableComponent } from './../table/table.component';
+import { OrderService } from './../Order.service';
 
 @NgModule({
     imports: [
@@ -22,8 +23,7 @@ import { TableComponent } from './../table/table.component';
         OrdersComponent,
         TableComponent
     ],
-    providers: []
+    providers: [OrderService]
 })
 export class OrdersModule {
-
 }
