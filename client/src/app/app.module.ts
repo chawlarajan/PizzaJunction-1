@@ -12,8 +12,10 @@ import { HomeComponent } from './home/home.component';
 import { PageNotFoundComponent } from './error404/error404.component';
 import { MenuItemsResolver } from './menu/menuitems-resolver/menuItems-resolver.service';
 import { DeliveryAddress } from './delivery-address/delivery-address.component';
+import { DateTimePickerModule } from 'ng-pick-datetime';
 // Services
 import { MenuService } from './shared/services/menu.service';
+import { StorageService } from './shared/services/storage.service';
 
 // Models
 
@@ -25,6 +27,7 @@ import { RouteConfig } from './routes/routes.config';
     BrowserModule,
     FormsModule,
     HttpModule,
+    DateTimePickerModule,
     RouterModule.forRoot(RouteConfig),
   ],
   declarations: [
@@ -37,7 +40,8 @@ import { RouteConfig } from './routes/routes.config';
   ],
   providers: [
     MenuService,
-    MenuItemsResolver
+    MenuItemsResolver,
+    StorageService
   ],
   bootstrap: [ AppComponent ]
 })

@@ -1,0 +1,33 @@
+{
+  "name": "Address",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "Street": {
+      "type": "string"
+    },
+    "Appartment": {
+      "type": "string"
+    },
+    "City": {
+      "type": "string"
+    },
+    "StateId": {
+      "type": "number"
+    },
+    "Zip": {
+      "type": "string"
+    },
+    "AddressId": {
+      "type": "number",
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

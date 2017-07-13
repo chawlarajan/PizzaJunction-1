@@ -42,5 +42,9 @@
   "ContactUs": {
     "dataSource": "sqlserverdb",
     "public": true
+  },
+  "Address": {
+    "dataSource": "sqlserverdb",
+    "public": true
   }
 }

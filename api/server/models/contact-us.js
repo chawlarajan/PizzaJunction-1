@@ -1,5 +1,7 @@
 'use strict';
 
+var nodemailer = require('nodemailer');
+
 module.exports = function (Contactus) {
     Contactus.add = function (contactus, cb) {      // {"Name": "sdf", "Email": "email", "Subject": "subject", "Message": "message"}
         var ds = Contactus.dataSource;
@@ -7,22 +9,36 @@ module.exports = function (Contactus) {
             "', @Email = '" + contactus.Email +
             "', @Subject = '" + contactus.Subject +
             "', @Message = '" + contactus.Message + "'";
-        //console.log('sql');
-        //console.log(app.dataSources.Email);
-        // app.models.Email.send({
-        //     to: 'gopisivia@gmail.com',
-        //     from: contactus.Email,
-        //     Subject: contactus.Subject,
-        //     text: contactus.Message
-        // });
-        console.log(sql);
-        cb(null, sql);
-        // ds.connector.query(sql, [], function (err, items) {
-        //     if (err) {
-        //         console.error(err);     //handle error
-        //     }
-        //     cb(err, items);
-        // });
+
+        let transporter = nodemailer.createTransport({
+            service: 'gmail',
+            secure: false,
+            port: 25,
+            auth: {
+                user: '<Email>',
+                pass: '<Password>'
+            },
+            tls: {
+                rejectUnauthorized: false
+            }
+        });
+
+        let HelperOptions = {
+            from: contactus.Email,
+            to: 'gopisivia@gmail.com',
+            subject: contactus.Subject,
+            text: contactus.Message
+        }
+
+        transporter.sendMail(HelperOptions, (err, mail) => {
+            if(err){
+                console.log(err);
+                cb(err, sql);
+                return;
+            }
+            console.log('mail sent');
+            cb(null, sql);
+        });
     };
 
     Contactus.remoteMethod('add', {
